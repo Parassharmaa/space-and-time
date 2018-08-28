@@ -1,0 +1,130 @@
+@import "globals";
+
+.container {
+  margin: 0;
+  background-image: url("./static/mongols1.jpeg");
+  background-size: cover;
+  background-size: auto 100%;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-container {
+  padding: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-item {
+  // background-image: linear-gradient(135deg, #ffd26f 10%, #3677ff 100%);
+  padding: 8px;
+  width: 200px;
+  margin: 10px;
+  height: 400px;
+  margin-top: 50px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+}
+
+.freeze {
+  background: #182026;
+  opacity: 0.6;
+}
+
+.freeze:hover {
+  background: #182026;
+}
+
+.gradient {
+  position: relative;
+  background: #4264fb;
+  z-index: 1;
+}
+
+.gradient::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(135deg, #eead92 10%, #6018dc 100%);
+  z-index: -1;
+  transition: opacity 0.5s linear;
+  opacity: 0;
+}
+
+.gradient:hover::before {
+  opacity: 1;
+}
+
+.slider-container {
+  display: flex;
+  background: #182026;
+  justify-content: center;
+}
+
+.centered-slider {
+  position: relative;
+}
+
+.map-hover {
+  position: absolute;
+  width: 70%;
+  height: 5%;
+  left: 30%;
+  margin-left: -50px;
+  top: 85%;
+  // background: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 20px;
+  color: #fff;
+  padding-bottom: 70px;
+  border-radius: 5px;
+}
+
+.insights-card {
+  position: absolute;
+  width: 26%;
+  left: 2%;
+  margin-left: -50px;
+  top: 0;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+.insights-card-item {
+  position: relative;
+  height: 100%;
+}
+
+.centered-title {
+  position: relative;
+  text-align: center;
+  font-size: 1em;
+  margin: 20px;
+}
+
+.title-container {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  left: 0;
+  top: 0;
+  color: #fff;
+  background: #4264fb;
+  box-shadow: 1px 2px 5px #333
+}
