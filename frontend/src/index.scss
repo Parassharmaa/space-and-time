@@ -101,7 +101,7 @@ html {
   width: 26%;
   left: 2%;
   margin-left: -50px;
-  top: 0;
+  top: 9%;
   bottom: 0;
   border-radius: 10px;
 }
@@ -109,12 +109,14 @@ html {
 .insights-card-item {
   position: relative;
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .centered-title {
   position: relative;
   text-align: center;
-  font-size: 1em;
+  font-size: 16px;
   margin: 20px;
 }
 
@@ -126,5 +128,86 @@ html {
   top: 0;
   color: #fff;
   background: #4264fb;
-  box-shadow: 1px 2px 5px #333
+  box-shadow: 1px 2px 5px #333;
+}
+
+.legends-card {
+  position: absolute;
+  width: 200px;
+  right: 4%;
+  margin-left: -50px;
+  bottom: 20%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+}
+
+.legends-items {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px !important;
+  flex-direction: column;
+}
+
+.color-legend {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.legend-title {
+  font-size: 9px;
+  line-height: 18px;
+}
+
+.legend-title > p {
+  margin-bottom: 0px;
+}
+
+.l-item {
+  margin: 4px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.event-title {
+  display: block;
+  font-size: 13px;
+}
+
+.event-head {
+  margin: 4px;
+  display: flex;
+  left: 10px;
+  position: relative;
+  font-size: 13px;
+  justify-content: space-between;
+}
+
+.event-item {
+  padding: 8px;
+  position: relative;
+  left: 10px;
+  border-bottom: 1px solid rgb(192, 192, 192);
+  cursor: pointer;
+}
+
+.event-item:hover {
+  background: rgb(231, 231, 231);
+}
+
+.e-title {
+  margin-top: 8px;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ut {
+  color: #137cbd;
+  text-decoration: underline;
 }
