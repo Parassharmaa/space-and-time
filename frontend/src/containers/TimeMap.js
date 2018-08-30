@@ -10,53 +10,35 @@ import {
 } from "react-mapbox-gl";
 import data from "./../data/mapdata.json";
 import { events } from "../data/events.json";
-import {
-  H5,
-  Slider,
-  Card,
-  Elevation,
-  Tag,
-  Button,
-  Dialog,
-  Classes,
-  Tooltip,
-  Intent
-} from "@blueprintjs/core";
+import { H5, Slider, Card, Elevation, Tag, Button } from "@blueprintjs/core";
+import LoginDialog from "../components/LoginDialog";
 import config from "../config";
 import { Scrollbars } from "react-custom-scrollbars";
+import legends from "../components/MongolLegends";
+import { connect } from "react-redux";
+import { actions } from "./../store";
 
 const Map = ReactMapboxGl({
   accessToken: config.mapboxAPI
 });
 
-const legends = {
-  mongols: {
-    "fill-color": "rgba(200, 0, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  ikhanate: {
-    "fill-color": "rgba(100, 0, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "northern yuan": {
-    "fill-color": "rgba(100, 250, 200, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "chagatai khanate": {
-    "fill-color": "rgba(0, 200, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "yuan dynasty": {
-    "fill-color": "rgba(0, 100, 200, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "golden horde": {
-    "fill-color": "rgba(0, 150, 100, 0.6)",
-    "fill-opacity": 0.7
-  }
+const mapStateToProps = state => {
+  return {
+    appLoading: state.app.loading
+  };
 };
 
-class Mongols extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    setLoading: payload => {
+      dispatch(actions.app.set_loading(payload));
+    },
+    toggleLoginDialog: () => {
+      dispatch(actions.app.toggle_login_dialog());
+    }
+  };
+};
+class TimeMap extends Component {
   state = {
     minYear: 0,
     maxYear: 0,
@@ -262,7 +244,15 @@ class Mongols extends Component {
                     <div className="event-title">
                       <div className="flex-between">
                         <Tag>{d.year}</Tag>
-                        <span className="ut"> Edit</span>
+                        <span
+                          className="ut"
+                          onClick={() => {
+                            this.props.toggleLoginDialog();
+                          }}
+                        >
+                          {" "}
+                          Edit
+                        </span>
                       </div>
 
                       <h3 className="e-title">{d.title}</h3>
@@ -294,61 +284,13 @@ class Mongols extends Component {
           </div>
         )}
 
-        <Dialog
-          icon="info-sign"
-          onClose={this.handleClose}
-          title=""
-          {...this.state}
-        >
-          <div className={Classes.DIALOG_BODY}>
-            <p>
-              <strong>
-                Data integration is the seminal problem of the digital age. For
-                over ten years, we’ve helped the world’s premier organizations
-                rise to the challenge.
-              </strong>
-            </p>
-            <p>
-              Palantir Foundry radically reimagines the way enterprises interact
-              with data by amplifying and extending the power of data
-              integration. With Foundry, anyone can source, fuse, and transform
-              data into any shape they desire. Business analysts become data
-              engineers — and leaders in their organization’s data revolution.
-            </p>
-            <p>
-              Foundry’s back end includes a suite of best-in-class data
-              integration capabilities: data provenance, git-style versioning
-              semantics, granular access controls, branching, transformation
-              authoring, and more. But these powers are not limited to the
-              back-end IT shop.
-            </p>
-            <p>
-              In Foundry, tables, applications, reports, presentations, and
-              spreadsheets operate as data integrations in their own right.
-              Access controls, transformation logic, and data quality flow from
-              original data source to intermediate analysis to presentation in
-              real time. Every end product created in Foundry becomes a new data
-              source that other users can build upon. And the enterprise data
-              foundation goes where the business drives it.
-            </p>
-            <p>
-              Start the revolution. Unleash the power of data integration with
-              Palantir Foundry.
-            </p>
-          </div>
-          <div className={Classes.DIALOG_FOOTER}>
-            <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-              <Tooltip content="Every contribution is reviewed before publishing.">
-                <Button intent={Intent.PRIMARY} onClick={this.handleClose}>
-                  Save
-                </Button>
-              </Tooltip>
-            </div>
-          </div>
-        </Dialog>
+        <LoginDialog />
       </div>
     );
   }
 }
 
-export default Mongols;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TimeMap);

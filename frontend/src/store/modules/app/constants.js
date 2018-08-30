@@ -1,0 +1,2 @@
+export const SET_LOADING = "APP/SET_LOADING";
+export const SET_LOGIN_DIALOG = "APP/SET_LOGIN_DIALOG";
