@@ -1,3 +1,4 @@
 Pipfile.lock
 config/env.py
 *.pyc
+.env
