@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Card, Elevation } from "@blueprintjs/core";
-import { Link } from "react-router-dom";
 
 class Home extends Component {
-
   routeTo(id) {
     this.props.history.push(id);
   }
@@ -13,7 +11,7 @@ class Home extends Component {
       <div className="container">
         <div className="flex-container">
           <Card
-            onClick={() => this.routeTo('mongols')}
+            onClick={() => this.routeTo("mongols")}
             interactive={true}
             className="flex-item gradient"
             elevation={Elevation.FOUR}
@@ -21,10 +19,7 @@ class Home extends Component {
             <h3>Rise and Fall of Mongols</h3>
           </Card>
 
-          <Card
-            className="flex-item freeze"
-            elevation={Elevation.FOUR}
-          >
+          <Card className="flex-item freeze" elevation={Elevation.FOUR}>
             <h3>Coming Soon</h3>
           </Card>
         </div>

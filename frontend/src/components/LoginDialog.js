@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Dialog, Classes } from "@blueprintjs/core";
 import { GoogleLogin } from "react-google-login";
-// import { GoogleAuth } from "./../services/Auth";
+import { GoogleAuth } from "./../services/Auth";
 import { connect } from "react-redux";
 import { actions } from "./../store";
 import config from "./../config";
@@ -34,26 +34,31 @@ class LoginDialog extends Component {
 
   googleLoginSuccess = e => {
     console.log(e);
-    // GoogleAuth(e.tokenId)
-    //   .then(data => {
-    //     this.props.setToken(data.data.token);
-    //     this.props.setUser(e.profileObj);
-    //     this.props.setAuthModal(false);
-    //     localStorage.setItem("token", data.data.token);
-    //     message.success(`Logged`);
-    //   })
-    //   .catch(err => {
-    //     message.error(`An error ocurred`);
-    //   });
-    toast(`Logged in as ${e.profileObj.name}`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true
-    });
-    this.props.toggleDialog();
+    GoogleAuth(e.tokenId)
+      .then(data => {
+        // this.props.setToken(data.data.token);
+        // this.props.setUser(e.profileObj);
+        this.props.toggleDialog();
+        localStorage.setItem("token", data.data.token);
+        toast(`Logged in as ${e.profileObj.name}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
+      })
+      .catch(err => {
+        toast.error(`An error occurred`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true
+          });
+      });
   };
 
   googleLoginError = e => {
