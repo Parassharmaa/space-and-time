@@ -1,0 +1,112 @@
+{
+  "events": [
+    {
+      "title": "Temujin is born",
+      "year": 1162,
+      "description": "Temujin, the son of a Mongol chieftain, is born. He marries Borte, his first wife, but she is kidnapped by the Merkits, a rival tribe. ",
+      "plot": [111.62146459999997, 49.020271]
+    },
+    {
+      "title": "Temujin unites rival tribes.",
+      "year": 1195,
+      "description": "Temujin unites rival tribes under his rule to free Borte. After defeating the Merkits and freeing her, he goes on to defeat other tribes. He institutes policies to support his soldiers rather than the aristocrats, but this brings him into conflict with his uncles, who claim the throne.",
+      "plot": []
+    },
+    {
+      "title": "Temujin assumes the title of Genghis Khan.",
+      "year": 1206,
+      "description": "Temujin becomes the ruler of the Ikh Mongol Uls at the kurultai (the general assembly of the tribes) and assumes the name Genghis Khan, which means \"universal leader.\"",
+      "plot": []
+    },
+    {
+      "title": "Genghis Khan expands the empire.",
+      "year": 1207,
+      "description": "Khan, pressured by both spiritual needs and scarcity of food, attacks the kingdom of Xi Xia, and after two years he forces it to surrender. Lured by rich rice fields, Genghis Khan then attacks Northern China under the Jin Dynasty, starting a war that lasts twenty years.",
+      "plot": []
+    },
+    {
+      "title": "The Mongols destroy the Tangut Dynasty of Xi Xia.",
+      "year": 1216,
+      "description": "Though subjugated under the Mongols, the Tangut Dynasty of Xi Xia refuses to lend military support to the campaign against the Khwarzin Dynasty, instead of going into open rebellion. After defeating the Khwarzins, Genghis Khan immediately takes his army back to Xi Xia and begins a string of victories over the Tanguts. After the victory, he orders the execution of the Tanguts, thereby putting an end to their dynasty.",
+      "plot": [111.48259099999996, 33.298364]
+    },
+    {
+      "title": "Genghis Khan invades the Khwarzin Dynasty.",
+      "year": 1219,
+      "description": "In 1219, Khan leads an army of 200,000 Mongol soldiers against the Khwarzin Dynasty in response to the Khwarzin leader's refusal to cooperate. The Mongols brutally invade every city they came across, killing or enslaving everyone they came across.",
+      "plot": [60.856668600000035, 41.3565336]
+    },
+    {
+      "title": "The Pax Mongolica begins.",
+      "year": 1221,
+      "description": "The Mongols destroy the Khwarzin Dynasty and assume control over their territories. This marks the beginning of the Pax Mongolica, in which the trade centers of China and Europe are connected under Mongol rule, allowing for safe passage. The Mongol law, Yassa, helps create peace in the empire by forbidding blood feuds, adultery, theft, bearing false witness, and doing harm to the environment. Religious freedom is also allowed under the Yassa, possibly due to the sheer difficulty of requiring such a large empire to unite under one religion.",
+      "plot": []
+    },
+    {
+      "title": "Genghis Khan dies.",
+      "year": 1227,
+      "description": "Genghis Khan dies soon after defeating the Tanguts. Before his death, he bestows leadership on his third son, Ogedei. His younger brother, Tolui, holds the regency for Ogedei until the formal election at the kurultai two years later. He immediately begins to expand and fortify the empire.",
+      "plot": []
+    },
+    {
+      "title": "War against the Jin Dynasty begins.",
+      "year": 1230,
+      "description": "The Great Khan Ogedei personally leads his army against the Jin Dynasty in China. His general, Subutai, captures the Emperor Wanyan's capital city, Kaifeng. Three Mongol armies form an alliance with the Song Dynasty and finish off Jin. After the defeat of the Jin Dynasty, Ogdei orders the construction of the Tumen Amgalan Ord, the \"Palace of Myriad Peace,\" and he turns the city the Karakorum into the Mongol capital. From this point, Ogedai's forces continue to push into China, Russia, and Eastern Europe.",
+      "plot": []
+    },
+    {
+      "title": "Ogedei dies.",
+      "year": 1241,
+      "description": "Ogedei dies, which forces Batu Khan, Genghis Khan's grandson and leader of the Golden Horde, to withdraw his invasion of Europe, which had reached the Holy Roman Empire. Batu Khan is forced to return for the kurultai to select Ogedei's successor but he refuses, sparking a four-year stalemate.",
+      "plot": []
+    },
+    {
+      "title": "Guyuk is elected Great Khan.",
+      "year": 1246,
+      "description": "Due to a threat from Genghis Khan's youngest brother, Temuge, Batu finally allies with Guyuk and allows his forces to attend the kurultai, which elects Guyuk as the next Great Khan. He refutes his mother's policies and punishes her supporters. He continues campaigns to expand into Song China, Iraq, and the Korean Peninsula.",
+      "plot": []
+    },
+    {
+      "title": "Mongke Khan succeeds as ruler.",
+      "year": 1248,
+      "description": "In 1248, Guyuk gathers troops to march westwards from the Karakorum, but he dies before the battle begins. His rival Batu calls a kurultai in his own territory, which his rivals refuse to attend, and he nominates Mongke, a grandson of Genghis Khan. This causes a division in the empire between the descendants of Ogedei on one side and Mongke and the descendants of Genghis's other son, Tolui. Mongke comes to power and institutes a bloody purge of the Ogedei line.",
+      "plot": []
+    },
+    {
+      "title": "Baghdad is captured",
+      "description": "Under the leadership of Hulagu Khan, Baghdad is besieged and captured in 1258. This represents the fall of the Abbasid Caliphate and opens the way for further conquest into the Middle East.",
+      "year": 1258,
+      "plot": [44.36148750000007, 33.3128057]
+    },
+    {
+      "title": "Mongke Khan dies.",
+      "year": 1259,
+      "description": "Mongke Khan, leading an army to complete the invasion of China, is forced to stay through the hot summer due to the protracted campaign. The disease spreads among the army, and Mongke catches it and dies. The Mongol forces are again forced to withdraw from their wars of conquest to return for a new kurultai to decide on the succession, which weakens their tactical positions. In the Middle East, the Christians and Muslim Mamluks ally and end the Mongol's invasion. This sets off a civil war between Ariqboqe Khan and Kublai Khan for the right to succession.",
+      "plot": []
+    },
+    {
+      "title": "Kublai Khan becomes the Great Khan.",
+      "year": 1260,
+      "description": "After a protracted civil war, Ariqboqe surrenders to Kublai Khan at Shangdu. This solidifies Kublai Khan's power and allows him to once again begin campaigns of conquest. He finally defeats the Song Dynasty in southern China and puts his own regime in place, called the Yuan, which makes the Mongols the first non-Chinese people to conquer all of China.",
+      "plot": []
+    },
+    {
+      "title": "Mongol Empire is split into 4 regions",
+      "year": 1265,
+      "description": "",
+      "plot": []
+    },
+    {
+      "title": "Kublai Khan Dies.",
+      "year": 1294,
+      "description": "After Kublai Khan, the Mongols disintegrate into competing entities and lose influence, in part due to the outbreak of the Black Death.",
+      "plot": []
+    },
+    {
+      "title": "The Ming Dynasty reclaims China and the Mongol Empire ends.",
+      "year": 1368,
+      "description": "In 1368, the Ming Dynasty overthrows the Yuan, the Mongols' ruling power, thus signifying the end of the empire.",
+      "plot": []
+    }
+  ]
+}
