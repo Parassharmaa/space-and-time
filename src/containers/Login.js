@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Button, InputGroup, Spinner } from "@blueprintjs/core";
 import { ToastContainer, toast } from "react-toastify";
 import { AdminAuth } from "../services/Auth";
-
+import { ValidateAdmin } from "../services/Validate";
 class Login extends Component {
   state = {
     username: "",
@@ -12,6 +12,10 @@ class Login extends Component {
 
   routeTo(id) {
     this.props.history.push(id);
+  }
+
+  componentDidMount() {
+    this.validateAdmin();
   }
 
   handleInputChange(key, event) {
@@ -50,6 +54,16 @@ class Login extends Component {
         draggable: true
       });
     }
+  }
+
+  validateAdmin() {
+    ValidateAdmin()
+      .then(() => {
+        this.routeTo("/dashboard");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {

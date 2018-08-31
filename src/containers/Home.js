@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Card, Elevation } from "@blueprintjs/core";
+import {
+  Card,
+  Elevation,
+  Navbar,
+  NavbarDivider,
+  NavbarHeading,
+  NavbarGroup,
+  Alignment
+} from "@blueprintjs/core";
+import MagicString from "magic-string";
 
 class Home extends Component {
   routeTo(id) {
@@ -9,7 +18,10 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="flex-container">
+        <div className="title-container">
+          <h3 className="centered-title">Space N Time</h3>
+        </div>
+        <div className="flex-container" style={{ marginTop: "40px" }}>
           <Card
             onClick={() => this.routeTo("mongols")}
             interactive={true}

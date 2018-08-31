@@ -18,6 +18,18 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleDialog: () => {
       dispatch(actions.app.toggle_login_dialog());
+    },
+    toggleContributionDialog: () => {
+      dispatch(actions.app.toggle_contribution_dialog());
+    },
+    setUser: user => {
+      dispatch(actions.user.set_email(user.email));
+      dispatch(actions.user.set_name(user.name));
+      dispatch(actions.user.set_pic(user.imageUrl));
+      dispatch(actions.user.set_login(true));
+    },
+    setToken: token => {
+      dispatch(actions.user.set_auth_token(token));
     }
   };
 };
@@ -36,8 +48,8 @@ class LoginDialog extends Component {
     console.log(e);
     GoogleAuth(e.tokenId)
       .then(data => {
-        // this.props.setToken(data.data.token);
-        // this.props.setUser(e.profileObj);
+        this.props.setToken(data.data.token);
+        this.props.setUser(e.profileObj);
         this.props.toggleDialog();
         localStorage.setItem("token", data.data.token);
         toast(`Logged in as ${e.profileObj.name}`, {
@@ -48,16 +60,17 @@ class LoginDialog extends Component {
           pauseOnHover: true,
           draggable: true
         });
+        this.props.toggleContributionDialog();
       })
-      .catch(err => {
+      .catch(() => {
         toast.error(`An error occurred`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true
-          });
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
       });
   };
 

@@ -11,12 +11,14 @@ import {
 import {
   H5,
   Slider,
+  Tooltip,
   Card,
   ProgressBar,
   Elevation,
   Tag,
   Button
 } from "@blueprintjs/core";
+import { ValidateUser } from "../services/Validate";
 import LoginDialog from "../components/LoginDialog";
 import config from "../config";
 import { Scrollbars } from "react-custom-scrollbars";
@@ -25,13 +27,16 @@ import { connect } from "react-redux";
 import { actions } from "./../store";
 import { MapEvents, MapPolygon } from "../services/MapData";
 import Axios from "axios";
+import ContributionDialog from "./../components/AddContributions";
+
 const Map = ReactMapboxGl({
   accessToken: config.mapboxAPI
 });
 
 const mapStateToProps = state => {
   return {
-    appLoading: state.app.loading
+    appLoading: state.app.loading,
+    isLoggenIn: state.user.loggedIn
   };
 };
 
@@ -42,6 +47,15 @@ const mapDispatchToProps = dispatch => {
     },
     toggleLoginDialog: () => {
       dispatch(actions.app.toggle_login_dialog());
+    },
+    toggleContributionDialog: () => {
+      dispatch(actions.app.toggle_contribution_dialog());
+    },
+    setEditContribution: payload => {
+      dispatch(actions.app.set_edit_contribution(payload));
+    },
+    setLogin: payload => {
+      dispatch(actions.user.set_login(payload));
     }
   };
 };
@@ -66,11 +80,11 @@ class TimeMap extends Component {
   };
 
   componentDidMount() {
+    this.validateUser();
     this.props.setLoading(true);
     Axios.all([MapPolygon("mongols"), MapEvents("mongols")])
       .then(
         Axios.spread((r1, r2) => {
-          console.log(r2);
           this.setState(
             {
               data: r1.data[0],
@@ -85,6 +99,21 @@ class TimeMap extends Component {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  validateUser() {
+    ValidateUser()
+      .then(() => {
+        this.props.setLogin(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  signOff() {
+    this.props.setLogin(false);
+    localStorage.removeItem('token');
   }
 
   dataInit() {
@@ -170,6 +199,24 @@ class TimeMap extends Component {
     this.setState({ mapPolygonData: dataByYear });
   }
 
+  editEvent(e) {
+    this.props.setEditContribution(e);
+    if (this.props.isLoggenIn) {
+      this.props.toggleContributionDialog();
+    } else {
+      this.props.toggleLoginDialog();
+    }
+  }
+
+  addEvent() {
+    // this.props.setEditContribution({});
+    // if (this.props.isLoggenIn) {
+    //   this.props.toggleContributionDialog();
+    // } else {
+    //   this.props.toggleLoginDialog();
+    // }
+  }
+
   render() {
     return (
       <div>
@@ -181,7 +228,17 @@ class TimeMap extends Component {
         {!this.props.appLoading && (
           <div>
             <div className="title-container">
-              <h3 className="centered-title">Rise and Fall of Mongols</h3>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <h3 className="centered-title">Rise and Fall of Mongols</h3>
+                {this.props.isLoggenIn && (
+                  <Button
+                    intent="primary"
+                    style={{ background: "#4264fb" }}
+                    onClick={() => this.signOff()}
+                    text="Logout"
+                  />
+                )}
+              </div>
             </div>
             <Map
               center={this.state.center}
@@ -259,14 +316,17 @@ class TimeMap extends Component {
                 >
                   <div className="event-head">
                     <span style={{ fontSize: "18px" }}>Events</span>
-                    <Button
-                      icon="add"
-                      intent="primary"
-                      onClick={() => {
-                        this.setState({ isOpen: true });
-                      }}
-                      text="Add"
-                    />
+                    <span>
+                      <Tooltip content="Coming Soon!">
+                        <Button
+                          icon="add"
+                          // disabled={true}
+                          intent="primary"
+                          onClick={() => this.addEvent()}
+                          text="Add"
+                        />
+                      </Tooltip>
+                    </span>
                   </div>
                   <hr style={{ position: "relative", left: "10px" }} />
                   {this.state.events.map((d, k) => {
@@ -282,9 +342,7 @@ class TimeMap extends Component {
                             <Tag>{d.year}</Tag>
                             <span
                               className="ut"
-                              onClick={() => {
-                                this.props.toggleLoginDialog();
-                              }}
+                              onClick={() => this.editEvent(d)}
                             >
                               Edit
                             </span>
@@ -322,6 +380,7 @@ class TimeMap extends Component {
             )}
 
             <LoginDialog />
+            <ContributionDialog />
           </div>
         )}
       </div>

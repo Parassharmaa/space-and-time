@@ -8,6 +8,7 @@ class Contribution(Document):
     description = StringField()
     year = IntField(required=True)
     plot = ListField()
+    email = StringField()
     edit_id = StringField(default=None)
     is_reviewed = BooleanField(default=False)
     is_deleted = BooleanField(default=False)
