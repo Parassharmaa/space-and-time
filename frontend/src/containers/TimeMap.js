@@ -175,7 +175,7 @@ class TimeMap extends Component {
       <div>
         {this.props.appLoading && (
           <div className="progress-bar">
-            <ProgressBar />
+            <ProgressBar intent="primary" />
           </div>
         )}
         {!this.props.appLoading && (
