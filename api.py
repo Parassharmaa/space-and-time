@@ -8,7 +8,7 @@ from map_polygon_api import MapPolygonApi
 from auth_api import GoogleAuth, AdminAuth, ValidateAdmin, ValidateUser
 from contributions_api import ListContribution, AddContribution, ReviewContribution
 
-app = Flask(__name__, static_folder='build')
+app = Flask(__name__, static_folder='build/')
 api = Api(app, prefix="/v1")
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -31,10 +31,10 @@ api.add_resource(ReviewContribution, '/contributions/review/<string:title_id>')
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    if path != "" and os.path.exists("build" + path):
-        return send_from_directory('build', path)
+    if path != "" and os.path.exists("build/" + path):
+        return send_from_directory('build/', path)
     else:
-        return send_from_directory('build', 'index.html')
+        return send_from_directory('build/', 'index.html')
 
 
 if __name__ == "__main__":
