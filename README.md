@@ -4,7 +4,7 @@ Visualizing geography with time.
 [APP URL](https://space-n-time.herokuapp.com)
 
 ## Features
-* Plots data (polygon/marker) to corresponding year
+* Plots data (polygon/marker) to the corresponding time
 * Events (Add/Edit)
 * User contributions on events.
 * Review contribution before publishing. (Admin Login)
