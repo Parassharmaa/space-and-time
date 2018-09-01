@@ -86,7 +86,8 @@ html {
   margin-left: -50px;
   top: 9%;
   bottom: 0;
-  border-radius: 10px; }
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1); }
 
 .toggle-side-bar {
   display: none;
@@ -104,8 +105,7 @@ html {
     top: 10%;
     z-index: 10;
     margin-left: 0;
-    left: 0;
-    transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1); }
+    left: 0; }
   .toggle-side-bar {
     display: flex; }
   .side-bar-close {
