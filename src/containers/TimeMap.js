@@ -61,6 +61,7 @@ const mapDispatchToProps = dispatch => {
 };
 class TimeMap extends Component {
   state = {
+    sideBarClose: true,
     minYear: 0,
     maxYear: 0,
     zoomLevel: [2],
@@ -113,7 +114,7 @@ class TimeMap extends Component {
 
   signOff() {
     this.props.setLogin(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
   }
 
   dataInit() {
@@ -217,6 +218,18 @@ class TimeMap extends Component {
     // }
   }
 
+  getSideBarStatus() {
+    if (this.state.sideBarClose) {
+      return "side-bar-close";
+    } else {
+      return "side-bar-open";
+    }
+  }
+
+  toggleSideBar() {
+    this.setState({ sideBarClose: !this.state.sideBarClose });
+  }
+
   render() {
     return (
       <div>
@@ -229,11 +242,18 @@ class TimeMap extends Component {
           <div>
             <div className="title-container">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h3 className="centered-title">Rise and Fall of Mongols</h3>
+                <h3 className="centered-title">
+                  <Button
+                    className="toggle-side-bar"
+                    icon={"menu"}
+                    onClick={() => this.toggleSideBar()}
+                  />
+                  Rise and Fall of Mongols
+                </h3>
                 {this.props.isLoggenIn && (
                   <Button
                     intent="primary"
-                    style={{ background: "#4264fb" }}
+                    className="logout-btn"
                     onClick={() => this.signOff()}
                     text="Logout"
                   />
@@ -304,10 +324,11 @@ class TimeMap extends Component {
               />
             </div>
 
-            <div className="insights-card">
+            <div className={`insights-card ${this.getSideBarStatus()}`}>
               <Scrollbars
                 autoHeight
                 autoHide
+                className="sm-scroll-bar"
                 autoHeightMin={window.innerHeight - 60}
               >
                 <Card
@@ -320,7 +341,6 @@ class TimeMap extends Component {
                       <Tooltip content="Coming Soon!">
                         <Button
                           icon="add"
-                          // disabled={true}
                           intent="primary"
                           onClick={() => this.addEvent()}
                           text="Add"
@@ -328,7 +348,10 @@ class TimeMap extends Component {
                       </Tooltip>
                     </span>
                   </div>
-                  <hr style={{ position: "relative", left: "10px" }} />
+                  <hr
+                    className="sm-hr"
+                    style={{ position: "relative", left: "10px" }}
+                  />
                   {this.state.events.map((d, k) => {
                     return (
                       <div

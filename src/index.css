@@ -88,9 +88,38 @@ html {
   bottom: 0;
   border-radius: 10px; }
 
+.toggle-side-bar {
+  display: none;
+  background: #4264fb !important;
+  margin-top: -5px;
+  margin-right: 5px;
+  height: 20px; }
+
+.toggle-side-bar > svg {
+  color: #fff !important; }
+
 @media screen and (max-width: 715px) {
   .insights-card {
-    display: none; } }
+    width: 100%;
+    top: 10%;
+    z-index: 10;
+    margin-left: 0;
+    left: 0;
+    transition: transform 0.3s cubic-bezier(0, 0.52, 0, 1); }
+  .toggle-side-bar {
+    display: flex; }
+  .side-bar-close {
+    transform: translate3d(-100vw, 0, 0); }
+  .side-bar-open {
+    transform: translate3d(0vw, 0, 0); }
+  .sm-scroll-bar {
+    margin-right: 0; }
+  .event-item,
+  .event-head,
+  .sm-hr {
+    left: 0 !important; }
+  .event-head {
+    position: relative; } }
 
 .insights-card-item {
   position: relative;
@@ -101,6 +130,7 @@ html {
 .centered-title {
   position: relative;
   text-align: center;
+  display: flex;
   font-size: 16px;
   margin: 20px; }
 
@@ -123,6 +153,12 @@ html {
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px; }
+
+.logout-btn {
+  background: #4264fb !important;
+  height: 20px;
+  margin-right: 5px;
+  margin-top: 15px; }
 
 .legends-items {
   display: flex;
