@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Elevation,
-  Navbar,
-  NavbarDivider,
-  NavbarHeading,
-  NavbarGroup,
-  Alignment
-} from "@blueprintjs/core";
-import MagicString from "magic-string";
+import { Card, Elevation } from "@blueprintjs/core";
 
 class Home extends Component {
   routeTo(id) {
