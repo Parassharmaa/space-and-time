@@ -9,8 +9,6 @@ import {
   Popup
 } from "react-mapbox-gl";
 import {
-  H5,
-  Slider,
   Tooltip,
   Card,
   ProgressBar,
@@ -413,6 +411,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TimeMap);
-function newFunction() {
-  "../components/TimeSlider.js";
-}
