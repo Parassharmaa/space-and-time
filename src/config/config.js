@@ -1,5 +1,7 @@
-const devApi = "http://localhost:8000/v1";
+// const devApi = "http://localhost:8000/v1";
 const prodApi = "https://space-n-time.herokuapp.com/v1";
+const devApi = "https://space-n-time.herokuapp.com/v1";
+
 
 const baseUrl = process.env.REACT_APP_STAGE === "prod" ? prodApi : devApi;
 

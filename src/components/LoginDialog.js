@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Dialog, Classes } from "@blueprintjs/core";
+import { Dialog, Classes } from "@blueprintjs/core";
 import { GoogleLogin } from "react-google-login";
 import { GoogleAuth } from "./../services/Auth";
 import { connect } from "react-redux";

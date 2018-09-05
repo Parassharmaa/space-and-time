@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import {
-  Card,
   Navbar,
   Button,
   NavbarGroup,
   NavbarDivider,
   NavbarHeading,
-  InputGroup,
   ProgressBar,
   Classes,
   Tag,
@@ -36,17 +34,17 @@ class Dashboard extends Component {
       .then(data => {
         this.setState({ contributions: data.data, loading: false });
       })
-      .catch(err => {
-        toast(`Network Error`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true
+      .catch(() => {
+          toast(`Network Error`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true
+          });
+          this.setState({ loading: false });
         });
-        this.setState({ loading: false });
-      });
   }
 
   acceptEdit(id) {

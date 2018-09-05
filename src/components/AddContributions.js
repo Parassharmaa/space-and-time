@@ -8,7 +8,7 @@ import {
   InputGroup,
   TextArea
 } from "@blueprintjs/core";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import { actions } from "./../store";

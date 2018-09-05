@@ -28,6 +28,7 @@ import { actions } from "./../store";
 import { MapEvents, MapPolygon } from "../services/MapData";
 import Axios from "axios";
 import ContributionDialog from "./../components/AddContributions";
+import TimeSlider from "../components/TimeSlider";
 
 const Map = ReactMapboxGl({
   accessToken: config.mapboxAPI
@@ -165,6 +166,7 @@ class TimeMap extends Component {
       if (d.year === year && d.plot.length > 0) {
         return true;
       }
+      return false;
     });
     this.setState({ mapMarkerData: coords }, () => {
       if (coords.length > 0) {
@@ -195,6 +197,7 @@ class TimeMap extends Component {
       if (d.properties.year.includes(year)) {
         return true;
       }
+      return false;
     });
 
     this.setState({ mapPolygonData: dataByYear });
@@ -264,7 +267,7 @@ class TimeMap extends Component {
               center={this.state.center}
               zoom={this.state.zoomLevel}
               ref={ref => (this.map = ref)}
-              style="mapbox://styles/paraz/cjlett29m8kjr2rs0oybzsn10"
+              style={"mapbox://styles/paraz/cjlett29m8kjr2rs0oybzsn10"}
               containerStyle={{
                 height: "100vh",
                 width: "100vw",
@@ -290,7 +293,10 @@ class TimeMap extends Component {
                 return (
                   <div key={k}>
                     <Marker coordinates={d.plot} anchor="bottom">
-                      <img src={"https://i.imgur.com/MK4NUzI.png"} />
+                      <img
+                        alt="marker"
+                        src={"https://i.imgur.com/MK4NUzI.png"}
+                      />
                     </Marker>
                     <Popup
                       coordinates={d.plot}
@@ -307,22 +313,14 @@ class TimeMap extends Component {
               })}
             </Map>
 
-            <div className="map-hover bg-darken75 color-white">
-              <H5 style={{ textAlign: "center", color: "white" }}>
-                Year {this.state.year}
-              </H5>
-              <Slider
-                min={this.state.minYear}
-                max={this.state.maxYear}
-                stepSize={0.1}
-                className="centered-slider"
-                labelStepSize={56}
-                onChange={value => this.getChangeHandler("year", value)}
-                value={this.state.year}
-                labelRenderer={this.renderLabel}
-                vertical={false}
-              />
-            </div>
+            <TimeSlider
+              onChange={value => this.getChangeHandler("year", value)}
+              labelRenderer={this.renderLabel}
+              minYear={this.state.minYear}
+              maxYear={this.state.maxYear}
+              labelStepSize={56}
+              year={this.state.year}
+            />
 
             <div className={`insights-card ${this.getSideBarStatus()}`}>
               <Scrollbars
@@ -415,3 +413,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TimeMap);
+function newFunction() {
+  "../components/TimeSlider.js";
+}
