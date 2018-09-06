@@ -20,13 +20,14 @@ import { ValidateUser } from "../services/Validate";
 import LoginDialog from "../components/LoginDialog";
 import config from "../config";
 import { Scrollbars } from "react-custom-scrollbars";
-import legends from "../components/MongolLegends";
 import { connect } from "react-redux";
 import { actions } from "./../store";
 import { MapEvents, MapPolygon } from "../services/MapData";
 import Axios from "axios";
 import ContributionDialog from "./../components/AddContributions";
 import TimeSlider from "../components/TimeSlider";
+import MongolLegends from "../components/MongolLegends";
+import { MongolLegendsData as legends } from "../components/LegendsData";
 
 const Map = ReactMapboxGl({
   accessToken: config.mapboxAPI
@@ -363,7 +364,7 @@ class TimeMap extends Component {
                               className="ut"
                               onClick={() => this.editEvent(d)}
                             >
-                              Edit
+                              background Edit
                             </span>
                           </div>
 
@@ -378,24 +379,7 @@ class TimeMap extends Component {
             </div>
 
             {this.state.mapPolygonData.length > 0 && (
-              <div className="legends-card">
-                <Card className="legend-items">
-                  {this.state.mapPolygonData.map((d, k) => {
-                    let empire = d["properties"]["empire"];
-                    return (
-                      <div key={k} className="l-item">
-                        <div
-                          className="color-legend"
-                          style={{ background: legends[empire]["fill-color"] }}
-                        />
-                        <p className="legend-title">
-                          {empire.toLocaleUpperCase()}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </Card>
-              </div>
+              <MongolLegends mapPolygonData={this.state.mapPolygonData} />
             )}
 
             <LoginDialog />

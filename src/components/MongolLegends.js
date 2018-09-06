@@ -1,28 +1,27 @@
-const MongolLegends = {
-  mongols: {
-    "fill-color": "rgba(200, 0, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  ikhanate: {
-    "fill-color": "rgba(100, 0, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "northern yuan": {
-    "fill-color": "rgba(100, 250, 200, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "chagatai khanate": {
-    "fill-color": "rgba(0, 200, 0, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "yuan dynasty": {
-    "fill-color": "rgba(0, 100, 200, 0.6)",
-    "fill-opacity": 0.7
-  },
-  "golden horde": {
-    "fill-color": "rgba(0, 150, 100, 0.6)",
-    "fill-opacity": 0.7
-  }
-};
+import React, { PureComponent } from "react";
+import { Card } from "@blueprintjs/core";
+import { MongolLegendsData as legends } from "./LegendsData";
 
+class MongolLegends extends PureComponent {
+  render() {
+    return (
+      <div className="legends-card">
+        <Card className="legend-items">
+          {this.props.mapPolygonData.map((d, k) => {
+            let empire = d["properties"]["empire"];
+            return (
+              <div key={k} className="l-item">
+                <div
+                  className="color-legend"
+                  style={{ background: legends[empire]["fill-color"] }}
+                />
+                <p className="legend-title">{empire.toLocaleUpperCase()}</p>
+              </div>
+            );
+          })}
+        </Card>
+      </div>
+    );
+  }
+}
 export default MongolLegends;
