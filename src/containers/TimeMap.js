@@ -8,18 +8,10 @@ import {
   Marker,
   Popup
 } from "react-mapbox-gl";
-import {
-  Tooltip,
-  Card,
-  ProgressBar,
-  Elevation,
-  Tag,
-  Button
-} from "@blueprintjs/core";
+import { ProgressBar, Button } from "@blueprintjs/core";
 import { ValidateUser } from "../services/Validate";
 import LoginDialog from "../components/LoginDialog";
 import config from "../config";
-import { Scrollbars } from "react-custom-scrollbars";
 import { connect } from "react-redux";
 import { actions } from "./../store";
 import { MapEvents, MapPolygon } from "../services/MapData";
@@ -28,6 +20,7 @@ import ContributionDialog from "./../components/AddContributions";
 import TimeSlider from "../components/TimeSlider";
 import MongolLegends from "../components/MongolLegends";
 import { MongolLegendsData as legends } from "../components/LegendsData";
+import SideBar from "../components/SideBar";
 
 const Map = ReactMapboxGl({
   accessToken: config.mapboxAPI
@@ -59,6 +52,7 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
+
 class TimeMap extends Component {
   state = {
     sideBarClose: true,
@@ -321,68 +315,21 @@ class TimeMap extends Component {
               year={this.state.year}
             />
 
-            <div className={`insights-card ${this.getSideBarStatus()}`}>
-              <Scrollbars
-                autoHeight
-                autoHide
-                className="sm-scroll-bar"
-                autoHeightMin={window.innerHeight - 60}
-              >
-                <Card
-                  className="insights-card-item"
-                  elevation={Elevation.THREE}
-                >
-                  <div className="event-head">
-                    <span style={{ fontSize: "18px" }}>Events</span>
-                    <span>
-                      <Tooltip content="Coming Soon!">
-                        <Button
-                          icon="add"
-                          intent="primary"
-                          onClick={() => this.addEvent()}
-                          text="Add"
-                        />
-                      </Tooltip>
-                    </span>
-                  </div>
-                  <hr
-                    className="sm-hr"
-                    style={{ position: "relative", left: "10px" }}
-                  />
-                  {this.state.events.map((d, k) => {
-                    return (
-                      <div
-                        key={k}
-                        className="event-item"
-                        style={this.isFocus(d.year)}
-                        onClick={() => this.onEventClick(d.year)}
-                      >
-                        <div className="event-title">
-                          <div className="flex-between">
-                            <Tag>{d.year}</Tag>
-                            <span
-                              className="ut"
-                              onClick={() => this.editEvent(d)}
-                            >
-                              background Edit
-                            </span>
-                          </div>
-
-                          <h3 className="e-title">{d.title}</h3>
-                        </div>
-                        <p>{d.description}</p>
-                      </div>
-                    );
-                  })}
-                </Card>
-              </Scrollbars>
-            </div>
+            <SideBar
+              getSideBarStatus={this.getSideBarStatus()}
+              addEvent={() => this.addEvent()}
+              editEvent={d => this.editEvent(d)}
+              events={this.state.events}
+              onEventClick={d => this.onEventClick(d)}
+              isFocus={d => this.isFocus(d)}
+            />
 
             {this.state.mapPolygonData.length > 0 && (
               <MongolLegends mapPolygonData={this.state.mapPolygonData} />
             )}
 
             <LoginDialog />
+
             <ContributionDialog />
           </div>
         )}
